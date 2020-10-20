@@ -11,31 +11,7 @@ def say_text(text):
 
 
 def inputbox(title, message, button_text):
-    root = tkinter.Tk()
-    root.title(title)
-    root.resizable(False, False)
-
-    label = tkinter.Label(text=message)
-    label.pack()
-
-    text = ''
-
-    def on_return(e=None):
-        nonlocal text
-        text = textbox.get()
-        root.destroy()
-
-    textbox = tkinter.Entry(width=40)
-    textbox.bind('<Return>', on_return)
-    textbox.pack()
-    textbox.focus_set()
-
-    button = tkinter.Button(text=button_text, command=on_return)
-    button.pack()
-
-    root.mainloop()
-
-    return text
+    return input()
 
 
 data = [{}]
@@ -84,6 +60,7 @@ while True:
                 except:
                     continue
                 say_text("Hello, I don't know who you are. Can you please write your name.")
+                # read = 
                 read = inputbox("Добавление пользователя", "Введите Имя", "Далее")
                 if read in ("", "Unknown"):
                     continue
@@ -93,8 +70,6 @@ while True:
                     data[0].update({read: [None, None]})
                     print(data)
                     continue
-            else:
-                continue
             face_names.append(name)
 
     process_this_frame = not process_this_frame
